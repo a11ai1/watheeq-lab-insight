@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AnalysisRouteImport } from './routes/analysis'
+import { Route as DevicesRouteImport } from './routes/devices'
+import { Route as LiveRouteImport } from './routes/live'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as SimulationRouteImport } from './routes/simulation'
+import { Route as SamplesIndexRouteImport } from './routes/samples.index'
+import { Route as SamplesIdRouteImport } from './routes/samples.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalysisRoute = AnalysisRouteImport.update({
+  id: '/analysis',
+  path: '/analysis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevicesRoute = DevicesRouteImport.update({
+  id: '/devices',
+  path: '/devices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveRoute = LiveRouteImport.update({
+  id: '/live',
+  path: '/live',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimulationRoute = SimulationRouteImport.update({
+  id: '/simulation',
+  path: '/simulation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SamplesIndexRoute = SamplesIndexRouteImport.update({
+  id: '/samples/',
+  path: '/samples/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SamplesIdRoute = SamplesIdRouteImport.update({
+  id: '/samples/$id',
+  path: '/samples/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analysis': typeof AnalysisRoute
+  '/devices': typeof DevicesRoute
+  '/live': typeof LiveRoute
+  '/reports': typeof ReportsRoute
+  '/simulation': typeof SimulationRoute
+  '/samples/$id': typeof SamplesIdRoute
+  '/samples/': typeof SamplesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analysis': typeof AnalysisRoute
+  '/devices': typeof DevicesRoute
+  '/live': typeof LiveRoute
+  '/reports': typeof ReportsRoute
+  '/simulation': typeof SimulationRoute
+  '/samples/$id': typeof SamplesIdRoute
+  '/samples': typeof SamplesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analysis': typeof AnalysisRoute
+  '/devices': typeof DevicesRoute
+  '/live': typeof LiveRoute
+  '/reports': typeof ReportsRoute
+  '/simulation': typeof SimulationRoute
+  '/samples/$id': typeof SamplesIdRoute
+  '/samples/': typeof SamplesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/analysis'
+    | '/devices'
+    | '/live'
+    | '/reports'
+    | '/simulation'
+    | '/samples/$id'
+    | '/samples/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/alerts'
+    | '/analysis'
+    | '/devices'
+    | '/live'
+    | '/reports'
+    | '/simulation'
+    | '/samples/$id'
+    | '/samples'
+  id:
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/analysis'
+    | '/devices'
+    | '/live'
+    | '/reports'
+    | '/simulation'
+    | '/samples/$id'
+    | '/samples/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertsRoute: typeof AlertsRoute
+  AnalysisRoute: typeof AnalysisRoute
+  DevicesRoute: typeof DevicesRoute
+  LiveRoute: typeof LiveRoute
+  ReportsRoute: typeof ReportsRoute
+  SimulationRoute: typeof SimulationRoute
+  SamplesIdRoute: typeof SamplesIdRoute
+  SamplesIndexRoute: typeof SamplesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analysis': {
+      id: '/analysis'
+      path: '/analysis'
+      fullPath: '/analysis'
+      preLoaderRoute: typeof AnalysisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devices': {
+      id: '/devices'
+      path: '/devices'
+      fullPath: '/devices'
+      preLoaderRoute: typeof DevicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live': {
+      id: '/live'
+      path: '/live'
+      fullPath: '/live'
+      preLoaderRoute: typeof LiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simulation': {
+      id: '/simulation'
+      path: '/simulation'
+      fullPath: '/simulation'
+      preLoaderRoute: typeof SimulationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/samples/': {
+      id: '/samples/'
+      path: '/samples'
+      fullPath: '/samples/'
+      preLoaderRoute: typeof SamplesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/samples/$id': {
+      id: '/samples/$id'
+      path: '/samples/$id'
+      fullPath: '/samples/$id'
+      preLoaderRoute: typeof SamplesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertsRoute: AlertsRoute,
+  AnalysisRoute: AnalysisRoute,
+  DevicesRoute: DevicesRoute,
+  LiveRoute: LiveRoute,
+  ReportsRoute: ReportsRoute,
+  SimulationRoute: SimulationRoute,
+  SamplesIdRoute: SamplesIdRoute,
+  SamplesIndexRoute: SamplesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

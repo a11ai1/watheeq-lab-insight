@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Architecture
+- CBC simulation state lives in a module-level store (src/lib/sim.ts, useSyncExternalStore) so all screens share live data without a backend; deterministic seed keeps SSR/hydration consistent.
